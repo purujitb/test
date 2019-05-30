@@ -11,7 +11,9 @@ pipeline {
     stage('Docker deploy') {
       steps {
         echo 'Deploying to docker'
-        docker.build("generalx/hw_test")
+        script {
+            docker.build("generalx/hw_test")
+        }
       }
     }
   }
