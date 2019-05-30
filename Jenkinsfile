@@ -12,7 +12,6 @@ pipeline {
       steps {
         echo 'Deploying to docker'
         docker.build("generalx/hw_test")
-        }
       }
     }
   }
