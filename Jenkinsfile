@@ -7,13 +7,10 @@ pipeline {
   agent any
   
   stages {
-    
-    stage('Checkout') {
-      git url: https://github.com/fastestimator/test.git", branch: master
-    }
-  
     stage('Build') {
+      steps {
         echo "Building"
+      }
     }
 
     stage('Docker deploy') {
