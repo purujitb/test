@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = "generalx/hello_docker"
     registryCredential = 'docker-hub-credentials'
+    dockerImage = ''
   }
 
   agent any
@@ -17,7 +18,7 @@ pipeline {
       steps {
         echo 'Deploying to docker'
         script {
-            docker.build registry
+            dockerImage = docker.build registry
         }
       }
     }
