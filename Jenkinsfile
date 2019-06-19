@@ -1,9 +1,4 @@
 pipeline {
-  environment {
-    registry = "generalx/hello_docker"
-    registryCredential = 'docker-hub-credentials'
-    dockerImage = ''
-  }
 
   agent { label 'single_cpu_worker||multi_cpu_worker' }
   
@@ -14,30 +9,18 @@ pipeline {
       }
     }
 
-    stage('Docker deploy') {
+    stage('Test') {
       steps {
-        echo 'Deploying to docker'
-        script {
-            dockerImage = docker.build registry
-        }
+        echo 'Testing'
       }
     }
 
     stage('Deploy Image') {
       steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
+        echo 'Deploying'
       }
     }
     
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry"
-      }
-    }
 
   }
 }
