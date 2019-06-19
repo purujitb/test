@@ -1,6 +1,6 @@
 pipeline {
 
-  agent { label 'single_cpu_worker||multi_cpu_worker' }
+  agent any
   
   stages {
   
@@ -11,7 +11,10 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('Test on worker 1') {
+    agent {
+      label 'multi_cpu_worker'
+    }
       steps {
       echo "NODE_NAME = ${env.NODE_NAME}"
         echo 'Testing'
