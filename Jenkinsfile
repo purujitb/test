@@ -13,7 +13,7 @@ pipeline {
 
     stage('Test on worker 1') {
     agent {
-      label 'multi_cpu_worker'
+      label 'worker3'
     }
       steps {
       echo "NODE_NAME = ${env.NODE_NAME}"
