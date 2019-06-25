@@ -16,7 +16,7 @@ pipeline {
         }
       }
     }
-    
+
     stage('Build') {
       steps {
        echo "NODE_NAME = ${env.NODE_NAME}"
@@ -26,7 +26,7 @@ pipeline {
 
     stage('Test on worker 1') {
     agent {
-      label 'worker3'
+      label 'worker_cpu'
     }
       steps {
       echo "NODE_NAME = ${env.NODE_NAME}"
